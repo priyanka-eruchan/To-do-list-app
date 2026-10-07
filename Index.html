@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Focus Desk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="desk">
+    <h1>Focus Desk</h1>
+
+    <!-- Plain HTML + JS: task list -->
+    <section class="panel" aria-labelledby="tasks-title">
+      <h2 id="tasks-title">Today's tasks</h2>
+      <form id="task-form" class="task-form">
+        <input id="task-input" type="text" placeholder="What needs doing?" aria-label="New task" required />
+        <button type="submit">Add task</button>
+      </form>
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button type="button" data-filter="all" class="active">All</button>
+        <button type="button" data-filter="open">Open</button>
+        <button type="button" data-filter="done">Done</button>
+      </div>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="task-count" class="count"></p>
+    </section>
+
+    <!-- The only React part: the timer -->
+    <section class="panel" aria-labelledby="timer-title">
+      <h2 id="timer-title">Focus timer</h2>
+      <div id="timer-root"></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="timer.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
