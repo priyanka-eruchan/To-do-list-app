@@ -1,0 +1,121 @@
+:root {
+  --paper: #eef1e8;
+  --ink: #1d2742;
+  --marker: #f0d54a;
+  --pencil: #c4483a;
+  --line: #cfd6c4;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Avenir Next", "Trebuchet MS", system-ui, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  /* graph-paper grid */
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.desk {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 11vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem;
+  line-height: 1;
+}
+
+h2 { font-size: 1.15rem; margin: 0 0 1rem; }
+
+.panel {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+button, input { font: inherit; color: inherit; }
+
+button {
+  cursor: pointer;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+  font-weight: 600;
+}
+button:hover { background: #2d3a5e; }
+:focus-visible { outline: 3px solid var(--pencil); outline-offset: 2px; }
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.task-form { display: flex; gap: 0.5rem; }
+
+.filters { display: flex; gap: 0.4rem; margin: 1rem 0 0.5rem; }
+.filters button {
+  background: transparent;
+  color: var(--ink);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.9rem;
+}
+.filters button.active { background: var(--marker); }
+
+.task-list { list-style: none; margin: 0; padding: 0; }
+.task-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--ink);
+}
+.task-list li span { flex: 1; overflow-wrap: anywhere; }
+.task-list li.done span { text-decoration: line-through; opacity: 0.55; }
+.task-list input[type="checkbox"] { width: 1.2rem; height: 1.2rem; accent-color: var(--ink); }
+
+.delete {
+  background: transparent;
+  color: var(--pencil);
+  border-color: transparent;
+  padding: 0.2rem 0.5rem;
+}
+.delete:hover { background: transparent; border-color: var(--pencil); }
+
+.count { margin: 0.8rem 0 0; font-size: 0.9rem; }
+
+/* timer (rendered by React) */
+.time {
+  font-size: clamp(3.5rem, 18vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0.5rem 0 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.time.finished { background: var(--marker); display: inline-block; padding: 0 0.3rem; }
+.timer-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.timer-row .ghost { background: transparent; color: var(--ink); }
+.timer-row .ghost.active { background: var(--marker); }
+
+@media (prefers-reduced-motion: no-preference) {
+  button { transition: background 0.15s; }
+}
